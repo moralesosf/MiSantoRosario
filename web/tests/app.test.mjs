@@ -9,6 +9,35 @@ const cross=JSON.parse(fs.readFileSync(new URL('../assets/cross-path.json',impor
 import {localDay,previousDay,buildFrames} from '../engine.mjs';
 import {shiftMonth,monthDays} from '../calendar.mjs';
 const lastFrame=buildFrames(config,'gloriosos').length-1;
+test('Android: reminders are offered after completion, never on startup or ordinary navigation',async()=>{
+ const b=await boot({}, {android:true});
+ assert.equal(b.nativeMessages.filter(m=>m.type==='prayer-completed').length,0);
+ assert.deepEqual(b.nativeMessages.find(m=>m.type==='sync-prayer-days').days,[]);
+ b.click('settings');b.click('home');b.click('start');
+ for(let i=0;i<lastFrame;i++)b.click('next');
+ const completion=b.nativeMessages.filter(m=>m.type==='prayer-completed');
+ assert.equal(completion.length,1);
+ assert.deepEqual(completion[0].days,[localDay()]);
+ b.click('next');b.click('home');assert.equal(b.nativeMessages.filter(m=>m.type==='prayer-completed').length,1);
+});
+test('Android: reminder controls send changes to Android and reflect permission denial',async()=>{
+ const b=await boot({}, {android:true});b.click('settings');
+ assert.match(b.app.innerHTML,/Recordatorio diario/);
+ b.click('reminder-time');assert.equal(b.nativeMessages.at(-1).type,'reminder-time');
+ b.change('reminder-enabled','',true);assert.deepEqual(b.nativeMessages.at(-1),{type:'reminder-enabled',enabled:true});
+ b.reminderState({enabled:true,hour:8,minute:15,endOfDay:true,permissionGranted:false});
+ assert.match(b.app.innerHTML,/08:15/);assert.match(b.app.innerHTML,/Permitir notificaciones/);
+ b.click('reminder-permission');assert.equal(b.nativeMessages.at(-1).type,'reminder-permission');
+ b.change('reminder-end-day','',false);assert.deepEqual(b.nativeMessages.at(-1),{type:'reminder-end-day',enabled:false});
+ b.reminderState({enabled:true,hour:8,minute:15,endOfDay:false,permissionGranted:true});
+ assert.doesNotMatch(b.app.innerHTML,/Permitir notificaciones/);
+});
+test('Android: manually registering today synchronizes the cancellation of pending alerts',async()=>{
+ const b=await boot({}, {android:true});b.click('settings');
+ b.click('calendar-day',{day:localDay()});b.click('save-days');
+ assert.deepEqual(b.nativeMessages.at(-1),{type:'sync-prayer-days',days:[localDay()]});
+ assert.equal(b.nativeMessages.filter(m=>m.type==='prayer-completed').length,0);
+});
 test('Android: haptics use the native channel and never vibrate twice',async()=>{
  const b=await boot({}, {android:true});
  assert.equal(b.nativeMessages.at(-1).type,'ready');
@@ -73,7 +102,7 @@ async function boot(seed={},options={}){
  function search(value){node('#prayer-search').value=value;dispatch('input',{target:{id:'prayer-search',value}});}
  function chooseDialog(index){dialog?.emit('click',{target:{closest:selector=>selector==='[data-modal]'?{dataset:{modal:String(index)}}:selector==='[data-dialog-index]'?{dataset:{dialogIndex:String(index)}}:null}});}
  async function windowEvent(name,event={}){for(const fn of windowEvents[name]||[])await fn(event);}
- return {get readingHTML(){return dialog?.className==='reading-dialog'?dialog.innerHTML:'';},get dialog(){return dialog;},closeReading,cancelReading,donationAmount,search,app,images,fontLoads,evaluation,stored,pulses,nativeMessages,nativeBack:()=>context.window.rosarioAndroidBack(),click,bead,swipe,edit,input,node,windowEvent,tap,change,chooseDialog,history,hasDialog:()=>!!dialog};
+ return {get readingHTML(){return dialog?.className==='reading-dialog'?dialog.innerHTML:'';},get dialog(){return dialog;},closeReading,cancelReading,donationAmount,search,app,images,fontLoads,evaluation,stored,pulses,nativeMessages,nativeBack:()=>context.window.rosarioAndroidBack(),reminderState:value=>context.window.rosarioReminderState(value),click,bead,swipe,edit,input,node,windowEvent,tap,change,chooseDialog,history,hasDialog:()=>!!dialog};
 }
 test('UI: avance, cuenta, swipe y finalización registran exactamente un día',async()=>{
  const b=await boot();assert.match(b.app.innerHTML,/streak-number/);assert.match(b.app.innerHTML,/home-background/);
@@ -113,7 +142,7 @@ test('instalación: no muestra botón en ningún modo ni después de ofertas del
 });
 test('calendario: marca varios días en borrador y actualiza la racha solo al guardar',async()=>{
  const today=localDay(),yesterday=previousDay(today),before=previousDay(yesterday);
- const b=await boot();b.click('settings');assert.match(b.app.innerHTML,/Sanctum Rosarium/);assert.match(b.app.innerHTML,/Versión 1\.5\.3/);assert.match(b.app.innerHTML,/Desarrollado por Andrés Morales Gil/);assert.match(b.app.innerHTML,/calendar-grid/);assert.doesNotMatch(b.app.innerHTML,/type="date"|Añadir día|history-streak|history-days/);
+ const b=await boot();b.click('settings');assert.match(b.app.innerHTML,/Sanctum Rosarium/);assert.match(b.app.innerHTML,/Versión 1\.6\.0/);assert.match(b.app.innerHTML,/Desarrollado por Andrés Morales Gil/);assert.match(b.app.innerHTML,/calendar-grid/);assert.doesNotMatch(b.app.innerHTML,/type="date"|Añadir día|history-streak|history-days/);
  b.click('calendar-day',{day:before});b.click('calendar-day',{day:yesterday});assert.equal(b.stored.has('rosario.days.v1'),false);assert.equal(b.node('#save-days').disabled,false);
  b.click('save-days');assert.deepEqual(JSON.parse(b.stored.get('rosario.days.v1')),[before,yesterday]);assert.equal(b.node('#save-days').disabled,true);assert.match(b.node('#history-status').textContent,/guardados/);
  b.click('home');assert.match(b.app.innerHTML,/aria-label="Racha de 2 días"/);b.click('start');for(let i=0;i<lastFrame;i++)b.click('next');assert.match(b.app.innerHTML,/<span>2<\/span><span>3<\/span>/);
@@ -252,8 +281,8 @@ test('cantos: letras tradicionales se muestran en el diálogo sin reemplazar tex
 
 test('donativos: corazón, monedas, cantidades y Atrás permanecen dentro de la app',async()=>{
  const b=await boot();assert.match(b.app.innerHTML,/class="donation-button".*aria-label="Donativo voluntario"/);
- b.click('settings');assert.match(b.app.innerHTML,/class="utility coffee-settings" data-action="donation"/);b.click('donation');assert.match(b.app.innerHTML,/Si esta app te ha ayudado a rezar, considera apoyarme con una donación/);b.history.back();assert.match(b.app.innerHTML,/Ajustes/);b.click('home');b.click('donation');assert.match(b.app.innerHTML,/¿Me invitas un café\?/);assert.match(b.app.innerHTML,/currency_code=MXN&amp;amount=60.00/);
- b.click('donation-preset',{amount:'150'});assert.match(b.app.innerHTML,/currency_code=MXN&amp;amount=150.00/);
+ b.click('settings');assert.match(b.app.innerHTML,/class="utility coffee-settings" data-action="donation"/);b.click('donation');assert.match(b.app.innerHTML,/Si esta app te ha ayudado a rezar, considera apoyarme con una donación/);b.history.back();assert.match(b.app.innerHTML,/Ajustes/);b.click('home');b.click('donation');assert.match(b.app.innerHTML,/¿Me invitas un café\?/);assert.match(b.app.innerHTML,/currency_code=MXN&amp;amount=30.00/);
+ b.click('donation-preset',{amount:'100'});assert.match(b.app.innerHTML,/currency_code=MXN&amp;amount=100.00/);
  b.click('donation-currency',{currency:'USD'});assert.match(b.app.innerHTML,/currency_code=USD&amp;amount=3.00/);
  b.donationAmount('7,25');const link=b.node('#donation-checkout');assert.equal(new URL(link.attributes.href).searchParams.get('amount'),'7.25');assert.equal(new URL(link.attributes.href).searchParams.get('currency_code'),'USD');
  b.donationAmount('0');assert.equal(link.attributes.href,undefined);assert.equal(link.attributes['aria-disabled'],'true');assert.match(b.node('#donation-status').textContent,/mayor que cero/);

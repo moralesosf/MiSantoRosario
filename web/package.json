@@ -5,5 +5,5 @@
   "scripts": {
     "test": "node --experimental-vm-modules --test tests/*.test.mjs"
   },
-  "version": "1.5.3"
+  "version": "1.6.0"
 }

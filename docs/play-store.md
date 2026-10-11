@@ -1,6 +1,6 @@
 # Preparación para Google Play
 
-Nombre: **Sanctum Rosarium**. Desarrollador: **Andrés Morales Gil**. Package: **com.morales.rosario**. Versión: **1.5.3 (1)**. Android mínimo: **8.0**, target API **36**. Sin anuncios, cuentas ni contenido de pago.
+Nombre: **Sanctum Rosarium**. Desarrollador: **Andrés Morales Gil**. Package: **com.morales.rosario**. Versión: **1.6.0 (2)**. Android mínimo: **8.0**, target API **36**. Sin anuncios, cuentas ni contenido de pago.
 
 Descripción breve:
 
@@ -21,3 +21,5 @@ El desarrollador debe completar la ficha, clasificación, público objetivo y fo
 Las aportaciones por PayPal son directas al creador y no conceden contenido, funciones, distintivos ni otras recompensas digitales. Referencia: [Google Play, aportaciones directas de usuario a creador](https://support.google.com/googleplay/android-developer/answer/10281818). La aplicación apunta a Android 16/API 36, conforme al [requisito de API objetivo](https://support.google.com/googleplay/android-developer/answer/11926878).
 
 Antes de producción, carga el bundle firmado en una pista de prueba y verifica la instalación en teléfonos reales, almacenamiento después de reiniciar, navegación Atrás, vibración, importación/exportación JSON, enlaces externos y pantallas con teclado abierto. El `.aab` se carga en Play Console; no se instala directamente en un teléfono.
+
+La versión 1.6.0 incluye recordatorios locales con permiso POST_NOTIFICATIONS y reprogramación después de reinicios. No utiliza alarmas exactas, servicios en primer plano ni servidores de notificaciones.

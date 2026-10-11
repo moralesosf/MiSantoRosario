@@ -59,6 +59,7 @@ public final class MainActivity extends ComponentActivity {
     private ValueCallback<Uri[]> fileCallback;
     private ActivityResultLauncher<Intent> importLauncher;
     private ActivityResultLauncher<Intent> exportLauncher;
+    private ReminderUi reminderUi;
     private boolean backPending;
     private boolean exportPending;
 
@@ -72,6 +73,11 @@ public final class MainActivity extends ComponentActivity {
         WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
                 .setAppearanceLightNavigationBars(true);
 
+        ActivityResultLauncher<String> notifications = registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(), granted -> {
+                    if (reminderUi != null) reminderUi.permissionResult(granted);
+                });
+        reminderUi = new ReminderUi(this, notifications, this::publishReminderState);
         importLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(), result -> {
             if (fileCallback == null) return;
@@ -196,11 +202,19 @@ public final class MainActivity extends ComponentActivity {
                     try {
                         JSONObject request = new JSONObject(message.getData());
                         switch (request.optString("type")) {
-                            case "ready": loading.setVisibility(View.GONE); break;
+                            case "ready": loading.setVisibility(View.GONE); publishReminderState(); reminderUi.resumeOffer(); break;
                             case "error": showLoadError(); break;
                             case "vibrate": vibrate(request.optString("kind")); break;
                             case "export": exportJson(request.optString("text")); break;
                             case "external": openExternal(Uri.parse(request.optString("url"))); break;
+                            case "sync-prayer-days": Reminders.syncDays(this, request.optJSONArray("days")); break;
+                            case "prayer-completed":
+                                Reminders.syncDays(this, request.optJSONArray("days"));
+                                Reminders.schedule(this); reminderUi.firstCompletion(); break;
+                            case "reminder-time": reminderUi.timePicker(false); break;
+                            case "reminder-enabled": reminderUi.setEnabled(request.optBoolean("enabled")); break;
+                            case "reminder-end-day": reminderUi.setEvening(request.optBoolean("enabled")); break;
+                            case "reminder-permission": reminderUi.requestPermission(); break;
                             default: break;
                         }
                     } catch (Exception error) { toast("No se pudo completar la acción."); }
@@ -261,6 +275,10 @@ public final class MainActivity extends ComponentActivity {
         try { exportPending = true; exportLauncher.launch(intent); }
         catch (ActivityNotFoundException error) { exportPending = false; exportFile().delete(); throw error; }
     }
+    private void publishReminderState() {
+        if (webView != null) webView.evaluateJavascript(
+                "window.rosarioReminderState?.(" + Reminders.state(this).toString() + ")", null);
+    }
     private void showLoadError() {
         loading.setVisibility(View.VISIBLE);
         loadingText.setText(R.string.load_error);
@@ -268,8 +286,12 @@ public final class MainActivity extends ComponentActivity {
     }
     private void toast(String text) { Toast.makeText(this, text, Toast.LENGTH_LONG).show(); }
     @Override protected void onPause() { webView.onPause(); super.onPause(); }
-    @Override protected void onResume() { super.onResume(); if (webView != null) webView.onResume(); }
+    @Override protected void onResume() {
+        super.onResume();
+        if (webView != null) { webView.onResume(); Reminders.schedule(this); publishReminderState(); }
+    }
     @Override protected void onDestroy() {
+        if (reminderUi != null) reminderUi.close();
         if (fileCallback != null) fileCallback.onReceiveValue(null);
         if (webView != null) { webView.stopLoading(); webView.destroy(); }
         super.onDestroy();

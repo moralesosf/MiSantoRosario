@@ -1,6 +1,28 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
     <string name="app_name">Sanctum Rosarium</string>
     <string name="preparing">Preparando tu rosario…</string>
     <string name="retry">Reintentar</string>
     <string name="load_error">No se pudo preparar tu rosario. Vuelve a intentarlo.</string>
+    <string name="reminder_channel">Recordatorios del rosario</string>
+    <string name="reminder_channel_description">Tu recordatorio diario y el aviso de fin de día.</string>
+    <string name="daily_reminder_title">Tu momento de oración</string>
+    <string name="daily_reminder_body">Toma un momento para rezar el rosario de hoy.</string>
+    <string name="streak_reminder_title">No pierdas tu racha</string>
+    <string name="streak_reminder_body">Todavía puedes rezar el rosario de hoy y continuar tu racha.</string>
+    <string name="evening_reminder_body">Todavía estás a tiempo de rezar el rosario de hoy.</string>
+    <string name="reminder_offer_title">¿Te gustaría un recordatorio diario?</string>
+    <string name="reminder_offer_body">Elige a qué hora quieres recibir tu recordatorio.</string>
+    <string name="reminder_choose_time">Desliza las ruedas para elegir la hora (formato de 24 horas).</string>
+    <string name="reminder_time_title">Tu hora de oración</string>
+    <string name="reminder_evening_note">Si aún no has rezado, habrá otro aviso a las 22:00. Puedes desactivar este aviso en Ajustes.</string>
+    <string name="hours">Horas del recordatorio</string>
+    <string name="minutes">Minutos del recordatorio</string>
+    <string name="time_separator">:</string>
+    <string name="not_now">Ahora no</string>
+    <string name="cancel">Cancelar</string>
+    <string name="activate">Activar</string>
+    <string name="save">Guardar</string>
+    <string name="notification_permission_title">Permite las notificaciones</string>
+    <string name="notification_permission_body">El horario está guardado. Para recibir los avisos, permite las notificaciones de Sanctum Rosarium en los ajustes de Android.</string>
+    <string name="open_settings">Abrir ajustes</string>
 </resources>

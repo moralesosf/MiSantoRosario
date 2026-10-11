@@ -1,6 +1,6 @@
 # Sanctum Rosarium · Android
 
-Aplicación Android independiente de Andrés Morales Gil. Identificador **`com.morales.rosario`**. Versión **1.5.3**, `versionCode=1`, Android 8.0 o posterior (API 26), `targetSdk=36`.
+Aplicación Android independiente de Andrés Morales Gil. Identificador **`com.morales.rosario`**. Versión **1.6.0**, `versionCode=2`, Android 8.0 o posterior (API 26), `targetSdk=36`.
 
 El código de la app web v1.5.3 se copió desde `moralesosf/Kerigma`, commit `f8ecaf4453252aaf2c17f81b79bfe0494e770438`, carpeta `public/rosario`. Este repositorio no modifica ni se despliega en Kerigma. La interfaz, fuentes, imágenes, oraciones y cantos se incluyen en la instalación y funcionan sin conexión.
 
@@ -10,7 +10,8 @@ El código de la app web v1.5.3 se copió desde `moralesosf/Kerigma`, commit `f8
 - Progreso local, animación de racha y calendario para registrar días anteriores.
 - Editor Personalizar: añadir, modificar, arrastrar, eliminar, importar y exportar JSON mediante el selector de documentos de Android.
 - Oraciones en español y latín; cantos con letras; diálogos con transparencia y blur.
-- Café voluntario por PayPal, en MXN o USD. Ningún aporte desbloquea funciones o contenido.
+- Recordatorio diario nativo: pregunta tras completar el primer rosario, selector de hora con ruedas y permiso de notificaciones al activar. Ajustes permite modificar hora, desactivar avisos y controlar el aviso de las 22:00 si aún no se ha rezado.
+- Café voluntario por PayPal, en MXN ($30, $50, $100) o USD. Ningún aporte desbloquea funciones o contenido.
 - Atrás de Android cierra primero los diálogos y protege los cambios pendientes del editor; desde Inicio permite salir.
 
 ## Compilar
@@ -21,7 +22,7 @@ Instala JDK 17, Android SDK Platform 36 y Build Tools 36.0.0. Android Studio pue
 cd web
 npm test
 cd ..
-./gradlew lintRelease assembleDebug bundleRelease
+./gradlew testReleaseUnitTest lintRelease assembleDebug bundleRelease
 ```
 
 Sin credenciales de firma, `bundleRelease` genera un bundle **sin firmar**, útil únicamente como resultado de compilación. Para Google Play utiliza el bundle firmado entregado o configura una clave de carga:
@@ -42,3 +43,9 @@ La integración usa `WebViewAssetLoader` bajo una URL HTTPS local, con un canal 
 Consulta [docs/play-store.md](docs/play-store.md) para la descripción, privacidad y las verificaciones realizadas. La política de privacidad puede enlazarse desde Play Console: [privacy-policy.md](https://github.com/moralesosf/MiSantoRosario/blob/main/docs/privacy-policy.md).
 
 La integración Android se ha compilado y verificado con lint, pruebas del motor/interfaz y validación del bundle. Antes de abrir producción, utiliza una pista de prueba de Play para comprobar en teléfonos reales la vibración, el gesto Atrás y los proveedores del selector de documentos.
+
+## APK de prueba y recordatorios
+
+Con las variables de firma configuradas, `./gradlew assembleRelease` genera `app/build/outputs/apk/release/app-release.apk`, instalable en un teléfono. La versión 1.6.0 se firma con la misma clave de carga de la primera entrega.
+
+Consulta [docs/reminders.md](docs/reminders.md) para los permisos, comportamiento y prueba de avisos. No se solicitan permisos al abrir la app: la invitación aparece al completar el primer rosario y el permiso de Android 13+ se pide al confirmar la activación. Declinar no vuelve a interrumpirte; la configuración sigue disponible en Ajustes.

@@ -1,5 +1,5 @@
 // Links open PayPal's checkout; no payment or account data is handled here.
-export const donationPresets={MXN:['60','100','150'],USD:['3','5','10']};
+export const donationPresets={MXN:['30','50','100'],USD:['3','5','10']};
 export function donationAmount(value){
  const text=String(value??'').trim().replace(',','.');
  if(!/^\d{1,6}(?:\.\d{1,2})?$/.test(text))return null;

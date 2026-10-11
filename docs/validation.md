@@ -1,17 +1,18 @@
-# Verificación de la entrega Android
+# Verificación de la APK Android 1.6.0
 
-Entrega: 11 de octubre de 2026. Sanctum Rosarium 1.5.3, versionCode 1, `com.morales.rosario`, min API 26, target API 36.
+Entrega: 11 de octubre de 2026. Sanctum Rosarium 1.6.0, versionCode 2, `com.morales.rosario`, min API 26, target API 36.
 
-- Compilación de release desde limpio: `clean lintRelease bundleRelease`, correcta.
-- Android Lint: cero errores, nueve avisos informativos. No se suprimieron comprobaciones.
-- Pruebas de interfaz, motor, editor, calendario, cantos, donaciones y canal Android: 66 correctas.
-- Bundletool 1.18.3: validación correcta y manifiesto con el package y SDK esperados.
-- Jarsigner: firma verificada, SHA256withRSA y clave RSA de 4096 bits. Certificado de carga autofirmado, normal para Android; clave privada fuera del repositorio.
-- Todos los assets empaquetados coinciden byte a byte con los preparados desde `web/`. No hay bibliotecas nativas `.so`.
-- Kerigma permaneció en el commit de origen `f8ecaf4453252aaf2c17f81b79bfe0494e770438` y solo se leyó/copió.
+- `testReleaseUnitTest lintRelease assembleRelease`: compilación y verificación correctas.
+- 72 pruebas de interfaz/motor/editor/calendario/cantos/donaciones/canal Android y 10 pruebas JVM de programación de recordatorios: todas correctas.
+- Android Lint: cero errores. No se suprimieron las comprobaciones.
+- APK release verificada con apksigner; certificado idéntico a la clave de carga de la primera entrega.
+- Package, versión y permisos POST_NOTIFICATIONS/RECEIVE_BOOT_COMPLETED comprobados en el manifiesto compilado.
+- Los assets empaquetados coinciden byte a byte con los preparados desde `web/`, incluidos los importes MXN 30/50/100 y el módulo de recordatorios.
+- No hay bibliotecas nativas `.so` ni credenciales de firma en el repositorio.
+- No se modificó Kerigma: el trabajo se realizó únicamente en MiSantoRosario.
 
-SHA256 del bundle firmado entregado:
+SHA256 de la APK firmada entregada:
 
-`9d4a2c71e254e1566dcf553cdeebcad252f805cf0037def9078c2dafc8df0260`
+`ac0bb15f4e72f20996c74272a0dd15752abe0ff9bc1a5a98eff6ebfb6f61480f`
 
-No se ejecutó en un dispositivo Android físico ni en un emulador. La prueba visual adicional con Chromium no pudo arrancar por restricciones del entorno. Utiliza una pista de prueba de Play Console antes de producción para verificar integración con el dispositivo y revisión de Google Play.
+Las pruebas de horario cubren cambios de día, zonas y horario de verano, permisos denegados, recordatorios desactivados, días ya rezados, duplicados y alertas retrasadas más allá de medianoche. No se ejecutó la APK en un teléfono Android físico o emulador; la entrega está preparada para esa prueba. Consulta [reminders.md](reminders.md) para probar notificaciones en el dispositivo, incluyendo las restricciones de batería de Android.
