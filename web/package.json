@@ -1,0 +1,9 @@
+{
+  "name": "sanctum-rosarium-android",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules --test tests/*.test.mjs"
+  },
+  "version": "1.5.3"
+}

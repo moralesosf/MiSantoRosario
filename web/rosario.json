@@ -1,0 +1,859 @@
+{
+  "version": 1,
+  "weekdays": [
+    "gloriosos",
+    "gozosos",
+    "dolorosos",
+    "gloriosos",
+    "luminosos",
+    "dolorosos",
+    "gozosos"
+  ],
+  "layouts": {
+    "intro": {
+      "type": "prayer",
+      "align": "center",
+      "className": "intro",
+      "showCross": true
+    },
+    "contrition": {
+      "type": "prayer",
+      "align": "center",
+      "className": "contrition"
+    },
+    "dialogue": {
+      "type": "dialogue",
+      "align": "center"
+    },
+    "reading": {
+      "type": "prayer",
+      "align": "left"
+    },
+    "mystery": {
+      "type": "decade",
+      "align": "center"
+    },
+    "editor-invocation": {
+      "type": "prayer",
+      "align": "center"
+    },
+    "personal-1": {
+      "type": "prayer",
+      "align": "left"
+    },
+    "personal-2": {
+      "type": "prayer",
+      "align": "left"
+    },
+    "personal-3": {
+      "type": "prayer",
+      "align": "left"
+    }
+  },
+  "prayers": {
+    "sign": {
+      "title": "Señal de la cruz",
+      "text": "Por la señal de la Santa Cruz, de nuestros enemigos líbranos Señor Dios Nuestro.\n\nEn el nombre del Padre, del Hijo y del Espíritu Santo.\nAmén."
+    },
+    "contrition": {
+      "title": "Acto de contrición",
+      "text": "Señor mío, Jesucristo, Dios y hombre verdadero, Creador, Padre y Redentor mío. Por ser Tú quien eres y porque te amo sobre todas las cosas, me pesa de todo corazón haberte ofendido. Quiero y propongo nunca más pecar.\nAmén."
+    },
+    "father": {
+      "title": "Padre Nuestro",
+      "text": "Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo.\n\nDanos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén."
+    },
+    "ave": {
+      "title": "Ave María",
+      "text": "Dios te salve, María, llena eres de gracia; el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús.\n\nSanta María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén."
+    },
+    "glory": {
+      "title": "Gloria",
+      "text": "Gloria al Padre y al Hijo y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén."
+    },
+    "maryGrace": {
+      "title": "María, madre de gracia",
+      "text": "María, madre de gracia, madre de misericordia,\nen la vida y en la muerte ampáranos gran Señora."
+    },
+    "fatima": {
+      "title": "Oración de Fátima",
+      "text": "Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia."
+    },
+    "salve": {
+      "title": "Salve",
+      "text": "Dios te salve, Reina y Madre de misericordia, vida, dulzura y esperanza nuestra.\n\nDios te salve. A Ti clamamos los desterrados hijos de Eva, a Ti suspiramos, gimiendo y llorando en este valle de lágrimas.\n\nEa, pues, Señora Abogada Nuestra, vuelve a nosotros tus ojos misericordiosos, y después de este destierro, muéstranos a Jesús, fruto bendito de tu vientre.\n\nOh, clemente, oh piadosa, oh dulce Virgen María.\n\nRuega por nosotros, Santa Madre de Dios, para que seamos dignos de alcanzar las promesas de Nuestro Señor Jesucristo.\nAmén."
+    },
+    "creed": {
+      "title": "Credo",
+      "text": "Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra.\n\nCreo en Jesucristo, su único Hijo, nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de Santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado; descendió a los infiernos; al tercer día resucitó de entre los muertos; subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos.\n\nCreo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén."
+    },
+    "angel": {
+      "title": "Ángel de la guarda",
+      "text": "Ángel de mi guarda, dulce compañía, no me desampares ni de noche ni de día. No me dejes solo, que me perdería. Amén."
+    },
+    "spirit": {
+      "title": "Ven, Espíritu Santo",
+      "text": "Ven, Espíritu Santo, llena los corazones de tus fieles y enciende en ellos el fuego de tu amor.\n\nEnvía tu Espíritu y todo será creado. Y renovarás la faz de la tierra.\n\nOh Dios, que has instruido los corazones de tus fieles con la luz del Espíritu Santo, concédenos que sintamos rectamente con el mismo Espíritu y gocemos siempre de su consuelo. Por Jesucristo nuestro Señor. Amén."
+    },
+    "offering": {
+      "title": "Ofrecimiento",
+      "text": "Por estos Misterios santos,\nDe que hemos hecho recuerdo,\nTe pedimos, oh María,\nDe la Fe santa el aumento;\nLa exaltación de la Iglesia;\nDel Papa el mejor acierto;\nDe la Nación Mexicana,\nLa unión y feliz gobierno;\nQue el gentil conozca a Dios;\nQue el hereje vea sus yerros;\nY todos los pecadores\nTengan arrepentimiento;\nQue los cautivos cristianos\nSean libres del cautiverio;\nGoce puerto el navegante;\nY la salud los enfermos;\nQue en el Purgatorio logren\nLas ánimas refrigerio;\nY que este Santo Rosario\nTenga aumento tan completo\nEn toda la Cristiandad,\nQue alcancemos, por su medio,\nEl Ir a alabar a Dios,\nEn tu compañía, en el Cielo.\nAmén."
+    }
+  },
+  "pages": {
+    "sign": {
+      "layout": "intro",
+      "title": "Inicio",
+      "blocks": [
+        {
+          "type": "prayer",
+          "ref": "sign"
+        }
+      ]
+    },
+    "contrition": {
+      "layout": "contrition",
+      "title": "Acto de contrición",
+      "blocks": [
+        {
+          "type": "prayer",
+          "ref": "contrition"
+        }
+      ]
+    },
+    "invocation": {
+      "layout": "editor-invocation",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "\n\n"
+        },
+        {
+          "type": "dialogue",
+          "leader": "Señor, ábreme los labios.",
+          "response": "Y mi boca proclamará tu alabanza."
+        },
+        {
+          "type": "dialogue",
+          "leader": "Dios mío, ven en mi auxilio.",
+          "response": "Señor, date prisa en socorrerme."
+        },
+        {
+          "type": "dialogue",
+          "leader": "Gloria al Padre y al Hijo y al Espíritu Santo.",
+          "response": "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén."
+        }
+      ]
+    },
+    "trinity": {
+      "layout": "reading",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Padre Nuestro…"
+        },
+        {
+          "type": "text",
+          "text": "Dios te Salve María Santísima, Hija de Dios Padre, en tus manos ponemos nuestra fe para que la ilumines, llena eres de gracia…"
+        },
+        {
+          "type": "text",
+          "text": "Dios te Salve María Santísima, Madre de Dios Hijo, en tus manos ponemos nuestra esperanza para que la alientes, llena eres de gracia…"
+        },
+        {
+          "type": "text",
+          "text": "Dios te Salve María Santísima, esposa de Dios Espíritu Santo, en tus manos ponemos nuestra caridad para que la inflames, llena eres de gracia…"
+        },
+        {
+          "type": "text",
+          "text": "Dios te Salve, María Santísima, Templo, Trono y Sagrario de la Santísima Trinidad, Virgen concebida sin la culpa Original."
+        }
+      ]
+    },
+    "salve": {
+      "layout": "reading",
+      "title": "Salve",
+      "blocks": [
+        {
+          "type": "prayer",
+          "ref": "salve"
+        }
+      ]
+    },
+    "litany": {
+      "layout": "reading",
+      "title": "Letanías",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Señor, ten piedad.\nCristo, ten piedad.\nSeñor, ten piedad.\nCristo, óyenos.\nCristo, escúchanos."
+        },
+        {
+          "type": "text",
+          "text": "Dios, Padre celestial,\n",
+          "emphasis": "ten piedad de nosotros.\n",
+          "suffix": "Dios, Hijo, Redentor del mundo,\nDios, Espíritu Santo,\nSantísima Trinidad, un solo Dios,"
+        },
+        {
+          "type": "text",
+          "text": "Santa María,\n",
+          "emphasis": "ruega por nosotros.\n",
+          "suffix": "Santa Madre de Dios,\nSanta Virgen de las vírgenes,\nMadre de Cristo,\nMadre de la Iglesia,\nMadre de la misericordia,\nMadre de la divina gracia,\nMadre de la esperanza,\nMadre purísima,\nMadre castísima,\nMadre siempre virgen,\nMadre inmaculada,\nMadre amable,\nMadre del buen consejo,\nMadre del Creador,\nMadre del Salvador,\nVirgen prudentísima,\nVirgen digna de veneración,\nVirgen digna de alabanza,\nVirgen poderosa,\nVirgen clemente,\nVirgen fiel,\nEspejo de justicia,\nTrono de la sabiduría,\nCausa de nuestra alegría,\nVaso espiritual,\nVaso digno de honor,\nVaso insigne de devoción,\nRosa mística,\nTorre de David,\nTorre de marfil,\nCasa de oro,\nArca de la Alianza,\nPuerta del cielo,\nEstrella de la mañana,\nSalud de los enfermos,\nRefugio de los pecadores,\nConsuelo de los migrantes,\nConsoladora de los afligidos,\nAuxilio de los cristianos,\nReina de los ángeles,\nReina de los patriarcas,\nReina de los profetas,\nReina de los apóstoles,\nReina de los mártires,\nReina de los confesores,\nReina de las vírgenes,\nReina de todos los santos,\nReina concebida sin pecado original,\nReina asunta a los cielos,\nReina del Santísimo Rosario,\nReina de la familia,\nReina de la paz."
+        },
+        {
+          "type": "dialogue",
+          "leader": "Cordero de Dios, que quitas el pecado del mundo,",
+          "response": "perdónanos, Señor."
+        },
+        {
+          "type": "dialogue",
+          "leader": "Cordero de Dios, que quitas el pecado del mundo,",
+          "response": "escúchanos, Señor."
+        },
+        {
+          "type": "dialogue",
+          "leader": "Cordero de Dios, que quitas el pecado del mundo,",
+          "response": "ten piedad de nosotros."
+        },
+        {
+          "type": "dialogue",
+          "leader": "Ruega por nosotros, Santa Madre de Dios.",
+          "response": "Para que seamos dignos de alcanzar las promesas de Nuestro Señor Jesucristo."
+        }
+      ]
+    },
+    "offering": {
+      "layout": "reading",
+      "title": "Ofrecimiento",
+      "blocks": [
+        {
+          "type": "prayer",
+          "ref": "offering"
+        }
+      ]
+    },
+    "personal-2": {
+      "title": " ",
+      "layout": "personal-2",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Bajo tu amparo nos acogemos, Santa Madre de Dios; no desprecies las súplicas que te dirigimos en nuestras necesidades, antes bien, líbranos de todo peligro, oh siempre Virgen, gloriosa y bendita.\n\nRuega por nosotros, Santa Madre de Dios. \nPara que seamos dignos de las promesas de Cristo. \n"
+        }
+      ]
+    },
+    "personal-3": {
+      "title": "Oración",
+      "layout": "personal-3",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Oh Dios, cuyo Hijo nos obtuvo la salvación eterna por medio de su vida, muerte y resurrección; concédenos a quienes meditamos estos misterios en el Rosario de la Virgen María, imitar lo que enseña y alcanzar lo que promete.\n\nPor Jesucristo, nuestro Señor.   Amén.\n\nAve María Purísima.\nSin pecado concebida.\n\nPor la señal de la Santa Cruz, de nuestros enemigos líbranos Señor Dios Nuestro.\n\nEn el nombre del Padre, del Hijo y del Espíritu Santo. Amén."
+        }
+      ]
+    }
+  },
+  "flow": {
+    "opening": [
+      "sign",
+      "contrition",
+      "invocation"
+    ],
+    "closing": [
+      "trinity",
+      "salve",
+      "litany",
+      "personal-2",
+      "offering",
+      "personal-3"
+    ]
+  },
+  "decade": {
+    "layout": "mystery",
+    "crossPrayer": "father",
+    "beadPrayer": "ave",
+    "after": [
+      {
+        "type": "prayer",
+        "ref": "glory"
+      },
+      {
+        "type": "prayer",
+        "ref": "maryGrace"
+      }
+    ]
+  },
+  "mysteries": {
+    "gozosos": {
+      "label": "Gozoso",
+      "items": [
+        {
+          "title": "La Encarnación\ndel Hijo de Dios"
+        },
+        {
+          "title": "La Visitación de María\na su prima Isabel"
+        },
+        {
+          "title": "El Nacimiento\ndel Hijo de Dios"
+        },
+        {
+          "title": "La Presentación de Jesús\nen el Templo"
+        },
+        {
+          "title": "El Niño Jesús perdido\ny hallado en el Templo"
+        }
+      ]
+    },
+    "dolorosos": {
+      "label": "Doloroso",
+      "items": [
+        {
+          "title": "La Oración de Jesús\nen el Huerto"
+        },
+        {
+          "title": "La Flagelación\ndel Señor"
+        },
+        {
+          "title": "La Coronación\nde espinas"
+        },
+        {
+          "title": "Jesús con la Cruz\na cuestas"
+        },
+        {
+          "title": "La Crucifixión\ny Muerte de Jesús"
+        }
+      ]
+    },
+    "gloriosos": {
+      "label": "Glorioso",
+      "items": [
+        {
+          "title": "La Resurrección\ndel Señor"
+        },
+        {
+          "title": "La Ascensión\ndel Señor"
+        },
+        {
+          "title": "La Venida\ndel Espíritu Santo"
+        },
+        {
+          "title": "La Asunción de María\nal Cielo"
+        },
+        {
+          "title": "La Coronación\nde la Virgen María"
+        }
+      ]
+    },
+    "luminosos": {
+      "label": "Luminoso",
+      "items": [
+        {
+          "title": "El Bautismo de Jesús\nen el Jordán"
+        },
+        {
+          "title": "La Autorrevelación de Jesús\nen las bodas de Caná"
+        },
+        {
+          "title": "El Anuncio del Reino\nde Dios"
+        },
+        {
+          "title": "La Transfiguración\ndel Señor"
+        },
+        {
+          "title": "La Institución\nde la Eucaristía"
+        }
+      ]
+    }
+  },
+  "collections": {
+    "es": [
+      {
+        "title": "Señal de la cruz",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "sign"
+          }
+        ]
+      },
+      {
+        "title": "Padre Nuestro",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "father"
+          }
+        ]
+      },
+      {
+        "title": "Ave María",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "ave"
+          }
+        ]
+      },
+      {
+        "title": "Gloria",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "glory"
+          }
+        ]
+      },
+      {
+        "title": "Acto de contrición",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "contrition"
+          }
+        ]
+      },
+      {
+        "title": "Credo",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "creed"
+          }
+        ]
+      },
+      {
+        "title": "Salve",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "salve"
+          }
+        ]
+      },
+      {
+        "title": "Ángel de la guarda",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "angel"
+          }
+        ]
+      },
+      {
+        "title": "Ven, Espíritu Santo",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "spirit"
+          }
+        ]
+      },
+      {
+        "title": "Oración de Fátima",
+        "blocks": [
+          {
+            "type": "prayer",
+            "ref": "fatima"
+          }
+        ]
+      },
+      {
+        "title": "Letanías",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Señor, ten piedad.\nCristo, ten piedad.\nSeñor, ten piedad.\nCristo, óyenos.\nCristo, escúchanos."
+          },
+          {
+            "type": "text",
+            "text": "Dios, Padre celestial,\n",
+            "emphasis": "ten piedad de nosotros.\n",
+            "suffix": "Dios, Hijo, Redentor del mundo,\nDios, Espíritu Santo,\nSantísima Trinidad, un solo Dios,"
+          },
+          {
+            "type": "text",
+            "text": "Santa María,\n",
+            "emphasis": "ruega por nosotros.\n",
+            "suffix": "Santa Madre de Dios,\nSanta Virgen de las vírgenes,\nMadre de Cristo,\nMadre de la Iglesia,\nMadre de la misericordia,\nMadre de la divina gracia,\nMadre de la esperanza,\nMadre purísima,\nMadre castísima,\nMadre siempre virgen,\nMadre inmaculada,\nMadre amable,\nMadre del buen consejo,\nMadre del Creador,\nMadre del Salvador,\nVirgen prudentísima,\nVirgen digna de veneración,\nVirgen digna de alabanza,\nVirgen poderosa,\nVirgen clemente,\nVirgen fiel,\nEspejo de justicia,\nTrono de la sabiduría,\nCausa de nuestra alegría,\nVaso espiritual,\nVaso digno de honor,\nVaso insigne de devoción,\nRosa mística,\nTorre de David,\nTorre de marfil,\nCasa de oro,\nArca de la Alianza,\nPuerta del cielo,\nEstrella de la mañana,\nSalud de los enfermos,\nRefugio de los pecadores,\nConsuelo de los migrantes,\nConsoladora de los afligidos,\nAuxilio de los cristianos,\nReina de los ángeles,\nReina de los patriarcas,\nReina de los profetas,\nReina de los apóstoles,\nReina de los mártires,\nReina de los confesores,\nReina de las vírgenes,\nReina de todos los santos,\nReina concebida sin pecado original,\nReina asunta a los cielos,\nReina del Santísimo Rosario,\nReina de la familia,\nReina de la paz."
+          },
+          {
+            "type": "dialogue",
+            "leader": "Cordero de Dios, que quitas el pecado del mundo,",
+            "response": "perdónanos, Señor."
+          },
+          {
+            "type": "dialogue",
+            "leader": "Cordero de Dios, que quitas el pecado del mundo,",
+            "response": "escúchanos, Señor."
+          },
+          {
+            "type": "dialogue",
+            "leader": "Cordero de Dios, que quitas el pecado del mundo,",
+            "response": "ten piedad de nosotros."
+          },
+          {
+            "type": "dialogue",
+            "leader": "Ruega por nosotros, Santa Madre de Dios.",
+            "response": "Para que seamos dignos de alcanzar las promesas de Nuestro Señor Jesucristo."
+          },
+          {
+            "type": "text",
+            "text": "Te rogamos nos concedas, Señor Dios nuestro, gozar de continua salud del alma y del cuerpo; y, por la gloriosa intercesión de la bienaventurada siempre Virgen María, vernos libres de las tristezas de la vida presente y disfrutar de las alegrías eternas. Por Cristo nuestro Señor. Amén."
+          }
+        ]
+      }
+    ],
+    "la": [
+      {
+        "title": "Signum crucis",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "In nómine Patris, et Fílii, et Spíritus Sancti. Amen."
+          }
+        ]
+      },
+      {
+        "title": "Pater noster",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Pater noster, qui es in cælis, sanctificétur nomen tuum. Advéniat regnum tuum. Fiat volúntas tua, sicut in cælo et in terra.\n\nPanem nostrum quotidiánum da nobis hódie. Et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris. Et ne nos indúcas in tentatiónem, sed líbera nos a malo. Amen."
+          }
+        ]
+      },
+      {
+        "title": "Ave María",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Ave María, grátia plena, Dóminus tecum. Benedícta tu in muliéribus, et benedíctus fructus ventris tui, Iesus.\n\nSancta María, Mater Dei, ora pro nobis peccatóribus, nunc et in hora mortis nostræ. Amen."
+          }
+        ]
+      },
+      {
+        "title": "Glória Patri",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Glória Patri, et Fílio, et Spirítui Sancto.\n\nSicut erat in princípio, et nunc, et semper, et in sǽcula sæculórum. Amen."
+          }
+        ]
+      },
+      {
+        "title": "Salve Regína",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Salve, Regína, mater misericórdiæ; vita, dulcédo et spes nostra, salve.\n\nAd te clamámus, éxsules fílii Evæ. Ad te suspirámus, geméntes et flentes in hac lacrimárum valle.\n\nEia ergo, advocáta nostra, illos tuos misericórdes óculos ad nos convérte. Et Iesum, benedíctum fructum ventris tui, nobis post hoc exsílium osténde.\n\nO clemens, o pia, o dulcis Virgo María.\n\nOra pro nobis, sancta Dei Génetrix. Ut digni efficiámur promissiónibus Christi. Amen."
+          }
+        ]
+      },
+      {
+        "title": "Credo",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Credo in Deum, Patrem omnipoténtem, Creatórem cæli et terræ. Et in Iesum Christum, Fílium eius únicum, Dóminum nostrum, qui concéptus est de Spíritu Sancto, natus ex María Vírgine, passus sub Póntio Piláto, crucifíxus, mórtuus, et sepúltus; descéndit ad ínferos; tértia die resurréxit a mórtuis; ascéndit ad cælos; sedet ad déxteram Dei Patris omnipoténtis; inde ventúrus est iudicáre vivos et mórtuos.\n\nCredo in Spíritum Sanctum, sanctam Ecclésiam cathólicam, sanctórum communiónem, remissiónem peccatórum, carnis resurrectiónem, vitam ætérnam. Amen."
+          }
+        ]
+      },
+      {
+        "title": "Ángele Dei",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Ángele Dei, qui custos es mei, me, tibi commíssum pietáte supérna, illúmina, custódi, rege et gubérna. Amen."
+          }
+        ]
+      },
+      {
+        "title": "Veni, Sancte Spíritus",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Veni, Sancte Spíritus, reple tuórum corda fidélium, et tui amóris in eis ignem accénde.\n\nEmítte Spíritum tuum, et creabúntur. Et renovábis fáciem terræ.\n\nDeus, qui corda fidélium Sancti Spíritus illustratióne docuísti, da nobis in eódem Spíritu recta sápere, et de eius semper consolatióne gaudére. Per Christum Dóminum nostrum. Amen."
+          }
+        ]
+      }
+    ]
+  },
+  "chants": [
+    {
+      "title": "Eran cien ovejas",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Eran cien ovejas que había en el rebaño\nEran cien ovejas que amante cuidó\nPero en una tarde, al contarlas todas\nLe faltaba una, le faltaba una y triste lloró\n\nLas noventa y nueve dejó en el aprisco\nY por las montañas a buscarla fue\nLa encontró gimiendo, temblando de frío\nUngió sus heridas, la tomó en sus brazos\nY al redil volvió\n\nEsta misma historia vuelve a repetirse\nTodavía hay ovejas que errabundas van\nQue van por el mundo, sin Dios y sin fe\n\nLas noventa y nueve dejó en el aprisco\nY por las montañas a buscarla fue\nLa encontró gimiendo, temblando de frío\nUngió sus heridas, la tomó en sus brazos\nY al redil volvió"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Eran%20cien%20ovejas%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.coroscatolicos.com/eran-cien-ovejas/",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Un canto al Buen Pastor y a su amor por cada una de sus ovejas."
+        }
+      ]
+    },
+    {
+      "title": "La Guadalupana",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Desde el cielo una hermosa mañana\nDesde el cielo una hermosa mañana\nLa Guadalupana, la Guadalupana\nLa Guadalupana bajó al Tepeyac\nLa Guadalupana, la Guadalupana\nLa Guadalupana bajó al Tepeyac\n\nSuplicante juntaba sus manos\nSuplicante juntaba sus manos\nY eran mexicanos, y eran mexicanos\nY eran mexicanos su porte y su faz\nY eran mexicanos, y eran mexicanos\nY eran mexicanos su porte y su faz\n\nSu llegada llenó de alegría\nSu llegada llenó de alegría\nDe luz y armonía, de luz y armonía\nDe luz y armonía todo el Anáhuac\nDe luz y armonía, de luz y armonía\nDe luz y armonía todo el Anáhuac\n\nJunto al monte pasaba Juan Diego\nJunto al monte pasaba Juan Diego\nY acercóse luego, y acercóse luego\nY acercóse luego al oír cantar\nY acercóse luego, y acercóse luego\nY acercóse luego al oír cantar\n\nJuan Dieguito, la Virgen le dijo\nJuan Dieguito, la Virgen le dijo\nEste cerro elijo, este cerro elijo\nEste cerro elijo para hacer mi altar\nEste cerro elijo, este cerro elijo\nEste cerro elijo para hacer mi altar\n\nEn la tilma entre rosas pintadas\nEn la tilma entre rosas pintadas\nSu imagen amada, su imagen amada\nSu imagen amada se dignó dejar\nSu imagen amada, su imagen amada\nSu imagen amada se dignó dejar\n\nDesde entonces para el mexicano\nDesde entonces para el mexicano\nSer Guadalupano, ser Guadalupano\nSer Guadalupano es algo esencial\nSer Guadalupano, ser Guadalupano\nSer Guadalupano es algo esencial"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=La%20Guadalupana%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.ecatolico.com/cantos/la-guadalupana.html",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Para acompañar tu oración a Nuestra Señora de Guadalupe."
+        }
+      ]
+    },
+    {
+      "title": "Adiós, Reina del cielo",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Adiós, Reina del cielo, Madre del Salvador\nAdiós, oh Madre mía\nAdiós, adiós, adiós\n\nDe tu divino rostro me alejo con pesar\nPermíteme que vuelva tus plantas a besar\n\nAdiós, Reina del cielo, Madre del Salvador\nAdiós, oh Madre mía\nAdiós, adiós, adiós\n\nA dejarte, oh María, no acierta el corazón\nTe lo entrego, Señora, dame tu bendición\n\nAdiós, Reina del cielo, Madre del Salvador\nAdiós, oh Madre mía\nAdiós, adiós, adiós\n\nAdiós, hija del Padre; Madre del Hijo, adiós\nDel Espíritu Santo, oh casta esposa, adiós\n\nAdiós, Reina del cielo, Madre del Salvador\nAdiós, oh Madre mía\nAdiós, adiós, adiós\n\nAdiós, oh Madre Virgen, más pura que la luz\nJamás, jamás me olvides delante de Jesús\n\nAdiós, Reina del cielo, Madre del Salvador\nAdiós, oh Madre mía\nAdiós, adiós, adiós"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Adi%C3%B3s%2C%20Reina%20del%20cielo%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.ecatolico.com/cantos/adios-reina-del-cielo.html",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Una despedida a María al terminar la oración."
+        }
+      ]
+    },
+    {
+      "title": "Oh María, Madre mía",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "¡Oh María, Madre mía!\n¡Oh consuelo del mortal!\nAmparadme y guiadme\nA la patria celestial\nAmparadme y guiadme\nA la patria celestial\n\nCon el ángel de María\nLas grandezas celebrad\nTransportados de alegría\nSus finezas publicad\n\n¡Oh María, Madre mía!\n¡Oh consuelo del mortal!\nAmparadme y guiadme\nA la patria celestial\nAmparadme y guiadme\nA la patria celestial\n\nSalve, júbilo del cielo\nDel Excelso dulce imán\nSalve, hechizo de este suelo\nTriunfadora de Satán\n\n¡Oh María, Madre mía!\n¡Oh consuelo del mortal!\nAmparadme y guiadme\nA la patria celestial\nAmparadme y guiadme\nA la patria celestial\n\nQuien a ti ferviente clama\nHalla alivio en el pesar\nPues tu nombre luz derrama\nGozo y bálsamo sin par\n\n¡Oh María, Madre mía!\n¡Oh consuelo del mortal!\nAmparadme y guiadme\nA la patria celestial\nAmparadme y guiadme\nA la patria celestial\n\nDe sus gracias tesorera\nLa nombró tu Redentor\nCon tal Madre y medianera\nNada temas, pecador\n\n¡Oh María, Madre mía!\n¡Oh consuelo del mortal!\nAmparadme y guiadme\nA la patria celestial\nAmparadme y guiadme\nA la patria celestial"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Oh%20Mar%C3%ADa%2C%20Madre%20m%C3%ADa%20canto%20cat%C3%B3lico",
+      "legacyDescription": "Una invitación a confiar en la protección de María.",
+      "lyricsSource": "https://funjdiaz.net/joaquin-diaz-canciones-ficha.php?id=42",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "¡Oh María, Madre mía,\noh consuelo del mortal!\nAmparadme y guiadme\na la patria celestial.\n\nCon el ángel de María\nlas grandezas celebrad;\ntransportados de alegría\nsus finezas publicad.\n\nSalve, júbilo del cielo,\ndel Excelso dulce imán;\nsalve, hechizo de este suelo,\nvencedora de Satán.\n\nQuien a ti ferviente clama\nhalla alivio en el pesar,\npues tu nombre luz derrama,\ngozo y bálsamo sin par.\n\nDe sus gracias tesorera\nte ha nombrado el Redentor;\ncon tal Madre y medianera,\nnada temas, pecador.\n\nPues te llamo con fe viva,\nmuestra, Madre, tu bondad;\na mí vuelve compasiva\nesos ojos de piedad.\n\nHijo fiel, quiera amarte\ny por ti sólo vivir,\ny por premio de ensalzarte,\nensalzándote morir.\n\nDel Eterno las riquezas\npor ti logre disfrutar,\ny contigo sus finezas\nmil y mil siglos cantar."
+        }
+      ]
+    },
+    {
+      "title": "Venid y vamos todos",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Venid y vamos todos\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nDe nuevo aquí nos tienes\nPurísima doncella\nMás que la luna bella\nPostrados a tus pies\nPostrados a tus pies\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nVenimos a ofrecerte\nLas flores de este suelo\nCon cuánto amor y anhelo\nSeñora, tú lo ves\nSeñora, tú lo ves\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nPor ellas te rogamos\nSi cándidas te placen\nLas que en la gloria nacen\nEn cambio tú nos des\nEn cambio tú nos des\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nTambién te presentamos\nComo más gratos dones\nRendidos corazones\nQue tú ya los posees\nQue tú ya los posees\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nQue Madre nuestra es\n\nVenid y vamos todos\nCon flores a María\nCon flores a María\nCon flores a María\nQue Madre nuestra es"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Venid%20y%20vamos%20todos%20canto%20cat%C3%B3lico",
+      "legacyDescription": "Para las flores de mayo y las celebraciones marianas.",
+      "lyricsSource": "https://diocesismalaga.es/celebramos/2014062263/mayo-con-flores-a-maria-que-madre-nuestra-es",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Venid y vamos todos\ncon flores a porfía,\ncon flores a María,\nque Madre nuestra es.\n\nDe nuevo aquí nos tienes,\npurísima doncella,\nmás que la luna bella,\npostrados a tus pies.\n\nA ofrecerte venimos\nflores del bajo suelo;\ncon cuánto amor y anhelo,\nSeñora, tú lo ves."
+        }
+      ]
+    },
+    {
+      "title": "Santa María del camino",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Mientras recorres la vida\nTú nunca solo estás\nContigo por el camino\nSanta María va\n\nVen con nosotros a caminar\nSanta María, ven\nVen con nosotros a caminar\nSanta María, ven\n\nAunque te digan algunos\nQue nada puede cambiar\nLucha por un mundo nuevo\nLucha por la verdad\n\nVen con nosotros a caminar\nSanta María, ven\nVen con nosotros a caminar\nSanta María, ven\n\nSi por el mundo los hombres\nSin conocerse van\nNo niegues nunca tu mano\nAl que contigo está\n\nVen con nosotros a caminar\nSanta María, ven\nVen con nosotros a caminar\nSanta María, ven\n\nAunque parezcan tus pasos\nInútil caminar\nTú vas haciendo caminos\nOtros los seguirán\n\nVen con nosotros a caminar\nSanta María, ven\nVen con nosotros a caminar\nSanta María, ven"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Santa%20Mar%C3%ADa%20del%20camino%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.coroscatolicos.com/santa-maria-del-camino/",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Para pedir a María que acompañe nuestro camino."
+        }
+      ]
+    },
+    {
+      "title": "Junto a ti, María",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Junto a ti, María\nComo un niño quiero estar\nTómame en tus brazos\nGuíame en mi caminar\n\nQuiero que me eduques\nQue me enseñes a rezar\nHazme transparente\nLléname de paz\n\nMadre, Madre\nMadre, Madre\nMadre, Madre\nMadre, Madre\n\nGracias, Madre mía\nPor llevarnos a Jesús\nHaznos más humildes\nTan sencillos como tú\n\nGracias, Madre mía\nPor abrir tu corazón\nPorque nos congregas\nY nos das tu amor\n\nMadre, Madre\nMadre, Madre\nMadre, Madre\nMadre, Madre"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Junto%20a%20ti%2C%20Mar%C3%ADa%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.ecatolico.com/cantos/junto-a-ti-maria.html",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Un canto para permanecer cerca de nuestra Madre."
+        }
+      ]
+    },
+    {
+      "title": "María, mírame",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "María mírame\nMaría mírame\nSi tú me miras, Él también me mirará\nMadre mía mírame\nDe la mano llévame\nMuy cerca de Él\nQue ahí me quiero quedar\n\nMaría, cúbreme con tu manto\nQue tengo miedo y no sé rezar\nQue por tus ojos misericordiosos\nTendré la fuerza, tendré la paz\n\nMaría mírame\nMaría mírame\nSi tú me miras, Él también me mirará\nMadre mía mírame\nDe la mano llévame\nMuy cerca de Él\nQue ahí me quiero quedar\n\nMadre, consuélame de mis penas\nEs que no quiero ofenderte más\nQue por tus ojos misericordiosos\nQuiero ir al cielo y verlos ya\n\nMaría mírame\nMaría mírame\nSi tú me miras, Él también me mirará\nMadre mía mírame\nDe la mano llévame\nMuy cerca de Él\nQue ahí me quiero quedar"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Mar%C3%ADa%2C%20m%C3%ADrame%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.ecatolico.com/cantos/maria-mirame.html",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Una oración cantada para buscar el amparo de María."
+        }
+      ]
+    },
+    {
+      "title": "Madre, óyeme",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Madre, óyeme\nMi plegaria es un grito en la noche\nMadre, mírame\nEn la noche de mi juventud\nMadre, sálvame\nMil peligros acechan mi vida\nMadre, lléname\nDe esperanza, de amor y de fe\n\nMadre, guíame\nEn las sombras no encuentro el camino\nMadre, llévame\nQue a tu lado feliz cantaré\n\nMadre, una flor\nUna flor con espinas que es bella\nMadre, un amor\nUn amor que ha empezado a nacer\nMadre, sonreír\nSonreír aunque llore en el alma\nMadre, construir\nCaminar aunque vuelva a caer\n\nMadre, solo soy\nEl anhelo y la carne que lucha\nMadre, tuyo soy\nEn tus manos me vengo a poner"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Madre%2C%20%C3%B3yeme%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.ecatolico.com/cantos/madre-oyeme-madre-de-los-jovenes.html",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Para presentar a María nuestras necesidades."
+        }
+      ]
+    },
+    {
+      "title": "Dulce Madre",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Dulce Madre, no te alejes\nTu vista de mí no apartes\nVen conmigo a todas partes\nY solo nunca me dejes\n\nYa que me proteges tanto\nComo verdadera Madre\nHaz que me bendiga el Padre\nEl Hijo y el Espíritu Santo\n\nDulce Madre, no te alejes\nTu vista de mí no apartes\nVen conmigo a todas partes\nY solo nunca me dejes\n\nYa que me proteges tanto\nComo verdadera Madre\nHaz que me bendiga el Padre\nEl Hijo y el Espíritu Santo"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Dulce%20Madre%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.ecatolico.com/cantos/dulce-madre.html",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Un canto de confianza y entrega a María."
+        }
+      ]
+    },
+    {
+      "title": "Perdona a tu pueblo",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Perdona a tu pueblo, Señor\nPerdona a tu pueblo\nPerdónale, Señor\n\nNo estés eternamente enojado\nNo estés eternamente enojado\nPerdónale, Señor\n\nPor tus profundas llagas crueles\nPor tus afrentas y por tus hieles\nPerdónale, Señor\n\nPor las heridas de pies y manos\nPor los azotes tan inhumanos\nPerdónale, Señor\n\nPor los tres clavos que te clavaron\nY las espinas que te punzaron\nPerdónale, Señor\n\nPerdona a tu pueblo, Señor\nPerdona a tu pueblo\nPerdónale, Señor\n\nPor la abertura de tu costado\nNo estés eternamente enojado\nPerdónale, Señor\n\nNo estés eternamente enojado\nNo estés eternamente enojado\n¡Perdónale, Señor!"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Perdona%20a%20tu%20pueblo%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.cancionero-liturgico.org/cancionero/perdona-a-tu-pueblo.pdf",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Para acompañar la oración de arrepentimiento."
+        }
+      ]
+    },
+    {
+      "title": "Altísimo Señor",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Altísimo Señor\nQue supiste juntar\nA un tiempo en el altar\nSer cordero y pastor\nQuisiera con fervor\nAmar y recibir\nA quien por mí\nQuiso morir\n\nCordero divinal\nPor nuestro sumo bien\nInmolado en Salem\nEn tu puro raudal\nDe gracia celestial\nLava mi corazón\nQue fiel te rinde adoración\n\nAltísimo Señor\nQue supiste juntar\nA un tiempo en el altar\nSer cordero y pastor\nQuisiera con fervor\nAmar y recibir\nA quien por mí\nQuiso morir\n\nSuavísimo maná\nQue sabe a dulce miel\nVen y del mundo vil\nNada me gustará\nVen y se tocará\nDel destierro cruel\nCon tu dulzura la amarga hiel\n\nAltísimo Señor\nQue supiste juntar\nA un tiempo en el altar\nSer cordero y pastor\nQuisiera con fervor\nAmar y recibir\nA quien por mí\nQuiso morir"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Alt%C3%ADsimo%20Se%C3%B1or%20canto%20cat%C3%B3lico",
+      "legacyDescription": "Para la adoración al Santísimo Sacramento.",
+      "lyricsSource": "https://funjdiaz.net/joaquin-diaz-canciones-ficha.php?id=108",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Altísimo Señor,\nque supisteis juntar\na un tiempo en el altar\nser cordero y pastor,\nconfieso con dolor\nqué mal hice en huir\nde quien por mí quiso morir.\n\nOh convite real,\ndo sirve el Redentor\nal siervo y al señor\ncomida sin igual,\npan de vida inmortal,\nven a entrañarte en mí\ny quede yo trocado en ti."
+        }
+      ]
+    },
+    {
+      "title": "Alabado sea el Santísimo",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Alabado sea el Santísimo\nSacramento del altar\nY la Virgen concebida\nSin pecado original\n\nEl manjar más regalado\nDe este suelo terrenal\nEs Jesús Sacramentado\nDios eterno e inmortal\n\nAlabado sea el Santísimo\nSacramento del altar\nY la Virgen concebida\nSin pecado original\n\nCelebremos con fe viva\nEste pan de caridad\nDonde Dios nos comunica\nSu dulzura y majestad\n\nAlabado sea el Santísimo\nSacramento del altar\nY la Virgen concebida\nSin pecado original\n\nSois el médico divino\nQue curáis todo dolor\nEl consuelo del que llora\nEl refugio del pecador\n\nAlabado sea el Santísimo\nSacramento del altar\nY la Virgen concebida\nSin pecado original"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Alabado%20sea%20el%20Sant%C3%ADsimo%20canto%20cat%C3%B3lico",
+      "lyricsSource": "https://www.ecatolico.com/cantos/alabado-sea-el-santisimo.html",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Un canto de alabanza a Jesús en la Eucaristía."
+        }
+      ]
+    },
+    {
+      "title": "Bendita sea tu pureza",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Bendita sea tu pureza\nY eternamente lo sea\nPues todo un Dios se recrea\nEn tan graciosa belleza\n\nA ti, celestial Princesa\nVirgen sagrada María\nYo te ofrezco en este día\nAlma, vida y corazón\n\nMírame con compasión\nNo me dejes, Madre mía"
+        }
+      ],
+      "listenUrl": "https://www.youtube.com/results?search_query=Bendita%20sea%20tu%20pureza%20canto%20cat%C3%B3lico",
+      "legacyDescription": "Una ofrenda de amor y confianza a la Virgen María.",
+      "lyricsSource": "https://corpusfolcloreinfantil.web.uclm.es/bendita-sea-tu-pureza/",
+      "previousBlocks": [
+        {
+          "type": "text",
+          "text": "Bendita sea tu pureza\ny eternamente lo sea,\npues todo un Dios se recrea\nen tan graciosa belleza.\n\nA ti, celestial princesa,\nVirgen sagrada María,\nyo te ofrezco en este día\nalma, vida y corazón.\n\nMírame con compasión;\nno me dejes, Madre mía."
+        }
+      ]
+    },
+    {
+      "title": "Salve Regina",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Salve, Regína, mater misericórdiæ; vita, dulcédo et spes nostra, salve.\n\nAd te clamámus, éxsules fílii Evæ. Ad te suspirámus, geméntes et flentes in hac lacrimárum valle.\n\nEia ergo, advocáta nostra, illos tuos misericórdes óculos ad nos convérte. Et Iesum, benedíctum fructum ventris tui, nobis post hoc exsílium osténde.\n\nO clemens, o pia, o dulcis Virgo María.\n\nOra pro nobis, sancta Dei Génetrix. Ut digni efficiámur promissiónibus Christi. Amen."
+        }
+      ],
+      "lyricsSource": "https://press.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html",
+      "listenUrl": "https://www.youtube.com/results?search_query=Salve%20Regina%20canto%20cat%C3%B3lico"
+    },
+    {
+      "title": "Tantum ergo",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Tantum ergo Sacraméntum\nvenerémur cérnui:\net antíquum documéntum\nnovo cedat rítui:\npræstet fides suppleméntum\nsénsuum deféctui.\n\nGenitóri, Genitóque\nlaus et iubilátio,\nsalus, honor, virtus quoque\nsit et benedíctio:\nprocedénti ab utróque\ncompar sit laudátio. Amen."
+        }
+      ],
+      "lyricsSource": "https://www.pastoraldemusica.org.ar/cancionero/cancion.php?id=626",
+      "listenUrl": "https://www.youtube.com/results?search_query=Tantum%20ergo%20canto%20cat%C3%B3lico"
+    },
+    {
+      "title": "Veni Creator",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Veni, Creátor Spíritus,\nmentes tuórum vísita,\nimple supérna grátia,\nquæ tu creásti péctora.\n\nQui díceris Paráclitus,\naltíssimi donum Dei,\nfons vivus, ignis, cáritas,\net spiritális únctio.\n\nTu septifórmis múnere,\ndígitus patérnæ déxteræ,\ntu rite promíssum Patris,\nsermóne ditans gúttura.\n\nAccénde lumen sénsibus,\ninfúnde amórem córdibus,\ninfírma nostri córporis\nvirtúte firmans pérpeti.\n\nHostem repéllas lóngius,\npacémque dones prótinus;\nductóre sic te prǽvio\nvitémus omne nóxium.\n\nPer te sciámus da Patrem,\nnoscámus atque Fílium;\nteque utriúsque Spíritum\ncredámus omni témpore.\n\nDeo Patri sit glória,\net Fílio, qui a mórtuis\nsurréxit, ac Paráclito,\nin sæculórum sǽcula. Amen."
+        }
+      ],
+      "lyricsSource": "https://hymnary.org/text/veni_creator_spiritus",
+      "listenUrl": "https://www.youtube.com/results?search_query=Veni%20Creator%20canto%20cat%C3%B3lico"
+    }
+  ],
+  "chantCatalogVersion": 4
+}

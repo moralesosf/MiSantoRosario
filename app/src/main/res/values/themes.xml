@@ -1,0 +1,17 @@
+<resources>
+    <style name="Theme.Sanctum.Base" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/parchment</item>
+        <item name="android:colorAccent">@color/ink</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/ink</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    <style name="Theme.Sanctum" parent="Theme.Sanctum.Base" />
+    <style name="Theme.Sanctum.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/parchment</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_rosary</item>
+        <item name="postSplashScreenTheme">@style/Theme.Sanctum</item>
+    </style>
+</resources>

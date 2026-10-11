@@ -1,0 +1,54 @@
+plugins { id 'com.android.application' }
+
+def signingPath = System.getenv('ROSARIO_KEYSTORE_PATH')
+android {
+    namespace 'com.morales.rosario'
+    compileSdk 36
+    buildToolsVersion '36.0.0'
+    buildFeatures { buildConfig true }
+    defaultConfig {
+        applicationId 'com.morales.rosario'
+        minSdk 26
+        targetSdk 36
+        versionCode 1
+        versionName '1.5.3'
+    }
+    signingConfigs {
+        if (signingPath) {
+            upload {
+                storeFile file(signingPath)
+                storePassword System.getenv('ROSARIO_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('ROSARIO_KEY_ALIAS') ?: 'upload'
+                keyPassword System.getenv('ROSARIO_KEY_PASSWORD')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (signingPath) signingConfig signingConfigs.upload
+        }
+    }
+    sourceSets { main.assets.srcDirs = [layout.buildDirectory.dir('rosaryAssets')] }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+tasks.register('syncRosaryAssets', Sync) {
+    from('../web') {
+        exclude 'tests/**', 'package.json', 'README.md', 'sw.js', 'manifest.webmanifest'
+    }
+    into(layout.buildDirectory.dir('rosaryAssets/rosario'))
+}
+tasks.named('preBuild').configure { dependsOn 'syncRosaryAssets' }
+
+dependencies {
+    implementation 'androidx.activity:activity:1.10.1'
+    implementation 'androidx.core:core:1.16.0'
+    implementation 'androidx.webkit:webkit:1.14.0'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+}
