@@ -9,6 +9,16 @@ const cross=JSON.parse(fs.readFileSync(new URL('../assets/cross-path.json',impor
 import {localDay,previousDay,buildFrames} from '../engine.mjs';
 import {shiftMonth,monthDays} from '../calendar.mjs';
 const lastFrame=buildFrames(config,'gloriosos').length-1;
+test('privacy policy is available offline in Settings and closes with Android Back',async()=>{
+ const b=await boot({}, {android:true});b.click('settings');
+ assert.match(b.app.innerHTML,/data-action="privacy">Política de privacidad/);
+ b.click('privacy');assert.equal(b.hasDialog(),true);
+ assert.match(b.dialog.innerHTML,/com\.morales\.rosario/);
+ assert.match(b.dialog.innerHTML,/El desarrollador no los recibe/);
+ assert.match(b.dialog.innerHTML,/Recordatorios y permisos/);
+ assert.match(b.dialog.innerHTML,/andresmorales\.vc@gmail\.com/);
+ assert.equal(b.nativeBack(),true);assert.equal(b.hasDialog(),false);assert.match(b.app.innerHTML,/Ajustes/);
+});
 test('Android: reminders are offered after completion, never on startup or ordinary navigation',async()=>{
  const b=await boot({}, {android:true});
  assert.equal(b.nativeMessages.filter(m=>m.type==='prayer-completed').length,0);
@@ -142,7 +152,7 @@ test('instalación: no muestra botón en ningún modo ni después de ofertas del
 });
 test('calendario: marca varios días en borrador y actualiza la racha solo al guardar',async()=>{
  const today=localDay(),yesterday=previousDay(today),before=previousDay(yesterday);
- const b=await boot();b.click('settings');assert.match(b.app.innerHTML,/Sanctum Rosarium/);assert.match(b.app.innerHTML,/Versión 1\.6\.0/);assert.match(b.app.innerHTML,/Desarrollado por Andrés Morales Gil/);assert.match(b.app.innerHTML,/calendar-grid/);assert.doesNotMatch(b.app.innerHTML,/type="date"|Añadir día|history-streak|history-days/);
+ const b=await boot();b.click('settings');assert.match(b.app.innerHTML,/Sanctum Rosarium/);assert.match(b.app.innerHTML,/Versión 1\.6\.1/);assert.match(b.app.innerHTML,/Desarrollado por Andrés Morales Gil/);assert.match(b.app.innerHTML,/calendar-grid/);assert.doesNotMatch(b.app.innerHTML,/type="date"|Añadir día|history-streak|history-days/);
  b.click('calendar-day',{day:before});b.click('calendar-day',{day:yesterday});assert.equal(b.stored.has('rosario.days.v1'),false);assert.equal(b.node('#save-days').disabled,false);
  b.click('save-days');assert.deepEqual(JSON.parse(b.stored.get('rosario.days.v1')),[before,yesterday]);assert.equal(b.node('#save-days').disabled,true);assert.match(b.node('#history-status').textContent,/guardados/);
  b.click('home');assert.match(b.app.innerHTML,/aria-label="Racha de 2 días"/);b.click('start');for(let i=0;i<lastFrame;i++)b.click('next');assert.match(b.app.innerHTML,/<span>2<\/span><span>3<\/span>/);

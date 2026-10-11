@@ -1,12 +1,13 @@
 import {nativeMessage,exportJson} from './native.mjs';
 import {normalizeReminderState,reminderSettingsMarkup} from './reminders.mjs';
+import {privacySections} from './privacy.mjs';
 import {prepareVisuals} from './visuals.mjs';
 import {RosaryEditor} from './editor.js';
 import {localDay,streakFor,completeDay,updateChantCatalog,familyFor,buildFrames,changeSessionMode,validateConfig} from './engine.mjs';
 import {monthDays,shiftMonth,validPrayerDay,applyDayChanges} from './calendar.mjs';
 import {donationPresets,paypalDonationUrl,shouldOfferCoffee} from './donations.mjs';
 
-const APP_VERSION='1.6.0';
+const APP_VERSION='1.6.1';
 let reminderState=normalizeReminderState();
 window.rosarioReminderState=value=>{reminderState=normalizeReminderState(value);if(view==='settings')render(false);};
 let visuals=null,readingDialog=null;
@@ -96,6 +97,20 @@ function readingScreen(){
  d.showModal();
 }
 
+function privacyInline(text){
+ return escape(text).replace(/\[([^\]]+)\]\((https:\/\/[^)]+|mailto:[^)]+)\)/g,(_,label,url)=>`<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\n/g,'<br>');
+}
+function privacyScreen(){
+ settingsScreen();
+ const d=document.createElement('dialog');d.className='reading-dialog privacy-dialog';
+ d.setAttribute('aria-labelledby','privacy-title');d.setAttribute('lang','es');
+ d.classList.toggle('enlarged',!!settings.enlarged);
+ d.innerHTML=`<header class="reading-header"><button class="reading-close" data-reading-close aria-label="Cerrar política de privacidad">${backArrow}<span>Volver</span></button></header><article class="reading-content"><h2 id="privacy-title">Política de privacidad</h2>${privacySections.map(section=>`${section.heading?`<h3>${escape(section.heading)}</h3>`:''}${section.paragraphs.map(text=>`<p>${privacyInline(text)}</p>`).join('')}`).join('')}</article>`;
+ document.body.append(d);readingDialog=d;
+ d.addEventListener('click',e=>{if(e.target.closest('[data-reading-close]')||e.target===d)back();});
+ d.addEventListener('cancel',e=>{e.preventDefault();back();});d.showModal();
+}
+
 const dayLabel=day=>new Date(day+'T12:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'});
 let calendarMonth=localDay().slice(0,7),dayChanges=new Map();
 const monthArrow=right=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${right?'m9 5 7 7-7 7':'m15 5-7 7 7 7'}"/></svg>`;
@@ -121,7 +136,7 @@ function navigateCalendar(offset){
  const next=shiftMonth(calendarMonth,offset);if(next>localDay().slice(0,7))return;
  calendarMonth=next;document.querySelector('#history-status').textContent='';renderCalendar('.calendar-month-label');
 }
-function settingsScreen(){app.innerHTML=`<section class="screen">${header()}<article class="page-content settings-content"><h1 class="page-title">Ajustes</h1><label class="setting-row">Vibración<input class="switch" type="checkbox" id="haptic" ${settings.haptic?'checked':''}></label><label class="setting-row">Texto más grande<input class="switch" type="checkbox" id="enlarged" ${settings.enlarged?'checked':''}></label><label class="setting-row" for="family">Misterios</label><select id="family"><option value="auto" ${settings.family==='auto'?'selected':''}>Automáticos según el día</option>${Object.keys(config.mysteries).map(k=>`<option value="${escape(k)}" ${settings.family===k?'selected':''}>${escape(k[0].toUpperCase()+k.slice(1))}</option>`).join('')}</select><fieldset class="counting-settings"><legend>Cómo rezar el rosario</legend><label><input type="radio" name="rosary-mode" id="mode-physical" value="physical" ${settings.mode==='physical'?'checked':''}><span>Con mi rosario físico</span></label><label><input type="radio" name="rosary-mode" id="mode-app" value="app" ${settings.mode==='app'?'checked':''}><span>Con el contador de la app</span></label></fieldset><button class="utility secondary" data-action="editor">Personalizar</button>${reminderSettingsMarkup(reminderState,!!globalThis.RosarioAndroid?.postMessage)}<section class="prayer-history" aria-labelledby="history-title"><h2 id="history-title">Tu racha</h2><div id="streak-calendar">${calendarMarkup()}</div><button id="save-days" class="utility calendar-save" data-action="save-days" ${dayChanges.size?'':'disabled'}>Guardar</button><p id="history-status" class="history-status" role="status"></p></section>${!persistence?'<p class="note" role="alert">El navegador está impidiendo guardar tu progreso.</p>':''}<button class="utility coffee-settings" data-action="donation">${coffeeMug}<span>¿Me invitas un café?</span></button><footer class="app-credits"><p class="app-name">Sanctum Rosarium</p><p>Versión ${APP_VERSION}</p><p>Desarrollado por Andrés Morales Gil</p></footer></article></section>`;}
+function settingsScreen(){app.innerHTML=`<section class="screen">${header()}<article class="page-content settings-content"><h1 class="page-title">Ajustes</h1><label class="setting-row">Vibración<input class="switch" type="checkbox" id="haptic" ${settings.haptic?'checked':''}></label><label class="setting-row">Texto más grande<input class="switch" type="checkbox" id="enlarged" ${settings.enlarged?'checked':''}></label><label class="setting-row" for="family">Misterios</label><select id="family"><option value="auto" ${settings.family==='auto'?'selected':''}>Automáticos según el día</option>${Object.keys(config.mysteries).map(k=>`<option value="${escape(k)}" ${settings.family===k?'selected':''}>${escape(k[0].toUpperCase()+k.slice(1))}</option>`).join('')}</select><fieldset class="counting-settings"><legend>Cómo rezar el rosario</legend><label><input type="radio" name="rosary-mode" id="mode-physical" value="physical" ${settings.mode==='physical'?'checked':''}><span>Con mi rosario físico</span></label><label><input type="radio" name="rosary-mode" id="mode-app" value="app" ${settings.mode==='app'?'checked':''}><span>Con el contador de la app</span></label></fieldset><button class="utility secondary" data-action="editor">Personalizar</button>${reminderSettingsMarkup(reminderState,!!globalThis.RosarioAndroid?.postMessage)}<section class="prayer-history" aria-labelledby="history-title"><h2 id="history-title">Tu racha</h2><div id="streak-calendar">${calendarMarkup()}</div><button id="save-days" class="utility calendar-save" data-action="save-days" ${dayChanges.size?'':'disabled'}>Guardar</button><p id="history-status" class="history-status" role="status"></p></section>${!persistence?'<p class="note" role="alert">El navegador está impidiendo guardar tu progreso.</p>':''}<button class="utility coffee-settings" data-action="donation">${coffeeMug}<span>¿Me invitas un café?</span></button><button class="utility secondary privacy-button" data-action="privacy">Política de privacidad</button><footer class="app-credits"><p class="app-name">Sanctum Rosarium</p><p>Versión ${APP_VERSION}</p><p>Desarrollado por Andrés Morales Gil</p></footer></article></section>`;}
 function saveCalendar(){
  if(!dayChanges.size)return;
  const status=document.querySelector('#history-status');
@@ -138,7 +153,7 @@ function render(resetScroll=true){
  const wasReading=!!readingDialog;closeReadingDialog();
  app.classList.toggle('enlarged',!!settings.enlarged);
  const keepList=view==='collection'&&wasReading&&app.querySelector('#prayer-list');
- if(!keepList)({home,donation:donationScreen,mode:modeScreen,session:sessionScreen,collection:collectionScreen,reading:readingScreen,settings:settingsScreen,editor:editorScreen})[view]();
+ if(!keepList)({home,donation:donationScreen,mode:modeScreen,session:sessionScreen,collection:collectionScreen,reading:readingScreen,settings:settingsScreen,privacy:privacyScreen,editor:editorScreen})[view]();
  if(resetScroll&&view!=='reading'&&!keepList)window.scrollTo({top:0,behavior:'instant'});
  maybeOfferCoffee();
 }
@@ -151,7 +166,7 @@ function restoreRoute(route){
  const previousView=view;
  collection=['es','la','chants'].includes(route.collection)?route.collection:'es';
  selected=Number.isInteger(route.selected)?route.selected:null;
- view=['home','donation','mode','session','collection','reading','settings','editor'].includes(route.view)?route.view:'home';
+ view=['home','donation','mode','session','collection','reading','settings','privacy','editor'].includes(route.view)?route.view:'home';
  navigationDepth=Number.isInteger(route.depth)&&route.depth>=0?route.depth:0;
  if(previousView!==view&&(previousView==='settings'||view==='settings'))resetCalendar();
  if(view==='reading'&&!items()[selected])view='collection';
@@ -205,7 +220,7 @@ function showPrayer(){const f=frames[session.index];const id=f.count<=0?config.d
 function modal(title,body,actions){document.querySelector('dialog')?.remove();const d=document.createElement('dialog');d.innerHTML=`<h2>${escape(title)}</h2><p>${escape(body)}</p><div class="dialog-actions">${actions.map(([label],i)=>`<button data-modal="${i}">${escape(label)}</button>`).join('')}</div>`;document.body.append(d);d.addEventListener('click',e=>{const b=e.target.closest('[data-modal]');if(!b)return;d.close();d.remove();actions[Number(b.dataset.modal)][1]();});d.addEventListener('cancel',()=>d.remove());d.showModal();}
 function back(){if(navigationPending)return;if(view==='editor'&&studio){studio.requestClose();return;}if(navigationDepth>0){navigationPending=true;window.history.back();}else go('home',true);}
 function applyConfig(candidate){validateConfig(candidate);if(!save(keys.config,candidate))throw Error('No se pudo guardar. Permite el almacenamiento de este navegador.');config=candidate;session=null;remove(keys.session);}
-const actions={'reminder-time':()=>nativeMessage('reminder-time'),'reminder-permission':()=>nativeMessage('reminder-permission'),donation:()=>go('donation'),'donation-currency':b=>{const currency=b.dataset.currency;if(!Object.hasOwn(donationPresets,currency))return;donationCurrency=currency;donationValue=donationPresets[currency][0];render(false);},'donation-preset':b=>{if(!donationPresets[donationCurrency].includes(b.dataset.amount))return;donationValue=b.dataset.amount;render(false);},'calendar-day':b=>toggleCalendarDay(b.dataset.day),'calendar-month':b=>navigateCalendar(Number(b.dataset.offset)),'save-days':saveCalendar,home:()=>go('home'),settings:()=>go('settings'),back,start:openRosary,'choose-mode':b=>{setCountingMode(b.dataset.mode);openRosary();},collection:b=>{collection=b.dataset.collection;go('collection');},'read-prayer':b=>{selected=Number(b.dataset.index);go('reading');},next:()=>advance(),'session-back':()=>{if(session.index>0)advance(-1);else go('home');},exit:()=>go('home'),'show-prayer':showPrayer,editor:()=>go('editor'),'save-config':()=>{const status=document.querySelector('#editor-status');try{applyConfig(JSON.parse(document.querySelector('#config-editor').value));status.textContent='Cambios guardados. Se aplicarán al comenzar tu siguiente rosario.';}catch(e){status.textContent='No se guardó: '+e.message;}},'download-config':()=>{try{const candidate=JSON.parse(document.querySelector('#config-editor').value);validateConfig(candidate);exportJson(candidate);}catch(e){document.querySelector('#editor-status').textContent='Revisa el JSON: '+e.message;}},'import-config':()=>document.querySelector('#import-file').click(),'reset-config':()=>modal('Restaurar oraciones','Se reemplazarán tus cambios de oraciones y pantallas por el contenido original. Tu racha se conservará.',[['Cancelar',()=>{}],['Restaurar',()=>{config=structuredClone(defaults);remove(keys.config);remove(keys.session);render();}]])};
+const actions={privacy:()=>go('privacy'),'reminder-time':()=>nativeMessage('reminder-time'),'reminder-permission':()=>nativeMessage('reminder-permission'),donation:()=>go('donation'),'donation-currency':b=>{const currency=b.dataset.currency;if(!Object.hasOwn(donationPresets,currency))return;donationCurrency=currency;donationValue=donationPresets[currency][0];render(false);},'donation-preset':b=>{if(!donationPresets[donationCurrency].includes(b.dataset.amount))return;donationValue=b.dataset.amount;render(false);},'calendar-day':b=>toggleCalendarDay(b.dataset.day),'calendar-month':b=>navigateCalendar(Number(b.dataset.offset)),'save-days':saveCalendar,home:()=>go('home'),settings:()=>go('settings'),back,start:openRosary,'choose-mode':b=>{setCountingMode(b.dataset.mode);openRosary();},collection:b=>{collection=b.dataset.collection;go('collection');},'read-prayer':b=>{selected=Number(b.dataset.index);go('reading');},next:()=>advance(),'session-back':()=>{if(session.index>0)advance(-1);else go('home');},exit:()=>go('home'),'show-prayer':showPrayer,editor:()=>go('editor'),'save-config':()=>{const status=document.querySelector('#editor-status');try{applyConfig(JSON.parse(document.querySelector('#config-editor').value));status.textContent='Cambios guardados. Se aplicarán al comenzar tu siguiente rosario.';}catch(e){status.textContent='No se guardó: '+e.message;}},'download-config':()=>{try{const candidate=JSON.parse(document.querySelector('#config-editor').value);validateConfig(candidate);exportJson(candidate);}catch(e){document.querySelector('#editor-status').textContent='Revisa el JSON: '+e.message;}},'import-config':()=>document.querySelector('#import-file').click(),'reset-config':()=>modal('Restaurar oraciones','Se reemplazarán tus cambios de oraciones y pantallas por el contenido original. Tu racha se conservará.',[['Cancelar',()=>{}],['Restaurar',()=>{config=structuredClone(defaults);remove(keys.config);remove(keys.session);render();}]])};
 app.addEventListener('click',e=>{
  if(navigationPending||(Date.now()<suppressTapUntil&&e.detail>0))return;
  const b=e.target.closest('[data-action]');if(b){actions[b.dataset.action]?.(b);return;}
@@ -246,4 +261,4 @@ window.rosarioAndroidBack=()=>{
  back();return true;
 };
 // target=_blank links bypass WebViewClient on some WebView versions.
-document.addEventListener('click',event=>{const link=event.target.closest('a[href]');if(!link)return;const url=new URL(link.href,location.href);if(url.protocol==='https:'&&url.origin!==location.origin&&nativeMessage('external',{url:url.href}))event.preventDefault();},true);
+document.addEventListener('click',event=>{const link=event.target.closest('a[href]');if(!link)return;const url=new URL(link.href,location.href);if(['https:','mailto:'].includes(url.protocol)&&url.origin!==location.origin&&nativeMessage('external',{url:url.href}))event.preventDefault();},true);

@@ -114,3 +114,5 @@ dialog::backdrop{background:#42332942}
 .reminder-evening small{display:block;margin-top:5px;font-size:13px;line-height:1.4;color:#58432e}
 .reminder-permission-note{font-size:15px;line-height:1.6;color:#58432e}
 .reminder-settings .utility{margin-top:10px}
+
+.privacy-dialog .reading-content{padding-top:24px}.privacy-dialog .reading-content h2{font-size:38px}.privacy-dialog .reading-content h3{font:italic 28px/1.25 Michelangelus,serif;color:#242634;margin:30px 0 14px}.privacy-dialog .reading-content p{font-size:16px;line-height:1.75;font-weight:400;margin:0 0 18px;color:#58432e}.privacy-dialog a{color:#242634;text-decoration:underline;text-underline-offset:3px}.privacy-dialog code{font-size:14px;overflow-wrap:anywhere}.privacy-button{margin-top:20px}

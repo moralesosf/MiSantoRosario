@@ -248,6 +248,12 @@ public final class MainActivity extends ComponentActivity {
                 Collections.emptyMap(), new ByteArrayInputStream(new byte[0]));
     }
     private void openExternal(Uri uri) {
+        if ("mailto".equals(uri.getScheme())
+                && "andresmorales.vc@gmail.com".equals(uri.getSchemeSpecificPart())) {
+            try { startActivity(new Intent(Intent.ACTION_SENDTO, uri)); }
+            catch (ActivityNotFoundException error) { toast("No hay una app de correo instalada."); }
+            return;
+        }
         if (!"https".equals(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null
                 || isLocal(uri)) return;
         try { startActivity(new Intent(Intent.ACTION_VIEW, uri).addCategory(Intent.CATEGORY_BROWSABLE)); }
