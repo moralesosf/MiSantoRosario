@@ -33,7 +33,9 @@ final class ReminderUi {
         if (Reminders.prefs(activity).getBoolean("offered", false)) return;
         Reminders.prefs(activity).edit().putBoolean("completionSeen", true).apply();
         activity.getWindow().getDecorView().postDelayed(() -> {
-            if (!activity.isFinishing() && !activity.isDestroyed()) timePicker(true);
+            if (!activity.isFinishing() && !activity.isDestroyed()
+                    && activity.getLifecycle().getCurrentState().isAtLeast(
+                            androidx.lifecycle.Lifecycle.State.RESUMED)) timePicker(true);
         }, 1200);
     }
     void resumeOffer() {

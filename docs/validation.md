@@ -13,6 +13,6 @@ Entrega: 11 de octubre de 2026. Sanctum Rosarium 1.6.0, versionCode 2, `com.mora
 
 SHA256 de la APK firmada entregada:
 
-`ac0bb15f4e72f20996c74272a0dd15752abe0ff9bc1a5a98eff6ebfb6f61480f`
+`c9be96b4fb6599bd9719a552cea6641bbb874319dbebfc616a1d0734e1a25c94`
 
 Las pruebas de horario cubren cambios de día, zonas y horario de verano, permisos denegados, recordatorios desactivados, días ya rezados, duplicados y alertas retrasadas más allá de medianoche. No se ejecutó la APK en un teléfono Android físico o emulador; la entrega está preparada para esa prueba. Consulta [reminders.md](reminders.md) para probar notificaciones en el dispositivo, incluyendo las restricciones de batería de Android.

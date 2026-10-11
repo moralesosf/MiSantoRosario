@@ -288,7 +288,10 @@ public final class MainActivity extends ComponentActivity {
     @Override protected void onPause() { webView.onPause(); super.onPause(); }
     @Override protected void onResume() {
         super.onResume();
-        if (webView != null) { webView.onResume(); Reminders.schedule(this); publishReminderState(); }
+        if (webView != null) {
+            webView.onResume(); Reminders.schedule(this); publishReminderState();
+            if (reminderUi != null && loading.getVisibility() == View.GONE) reminderUi.resumeOffer();
+        }
     }
     @Override protected void onDestroy() {
         if (reminderUi != null) reminderUi.close();
